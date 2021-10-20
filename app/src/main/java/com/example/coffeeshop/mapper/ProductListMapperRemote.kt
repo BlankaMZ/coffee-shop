@@ -9,7 +9,9 @@ class ProductListMapperRemote : BaseMapper<List<NetworkProduct>, List<Product>> 
             Product(
                 id = networkProduct.id,
                 name = networkProduct.name,
-                grossPrice = networkProduct.grossPrice
+                manufacturer = networkProduct.manufacturer,
+                grossPrice = networkProduct.grossPrice,
+                images = networkProduct.images
             )
         }
     }
@@ -19,7 +21,9 @@ class ProductListMapperRemote : BaseMapper<List<NetworkProduct>, List<Product>> 
             NetworkProduct(
                 id = product.id,
                 name = product.name,
-                grossPrice = product.grossPrice
+                manufacturer = product.manufacturer,
+                grossPrice = product.grossPrice,
+                images = product.images
             )
         }
     }

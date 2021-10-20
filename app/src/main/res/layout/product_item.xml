@@ -1,57 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<data>
-    <variable
-        name="product"
-        type="com.example.coffeeshop.data.model.Product" />
-</data>
+    <data>
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        <variable
+            name="product"
+            type="com.example.coffeeshop.data.model.Product" />
+    </data>
 
-    <com.skydoves.elasticviews.ElasticCardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="@color/teal_200"
-        android:elevation="12dp"
-        app:cardView_duration="250"
-        app:cardView_scale="0.8"
-        android:layout_margin="17dp">
+        android:orientation="vertical">
 
-        <RelativeLayout
+
+        <com.skydoves.elasticviews.ElasticCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_margin="17dp"
+            android:elevation="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardView_scale="0.8"
+            app:strokeColor="@color/black"
+            app:strokeWidth="0.5dp">
 
-            <TextView
-                android:id="@+id/product_name"
-                android:layout_alignParentStart="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="140dp"
-                app:text="@{product.name}"
-                android:textSize="18sp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/product_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:scaleType="fitCenter"
+                    app:error="@{@drawable/add_a_photo}"
+                    app:imageUrl="@{product.images[0].image}"
+                    app:imageView_duration="300"
+                    app:imageView_scale="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.6">
+
+                    <TextView
+                        android:id="@+id/product_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@{product.name}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/product_manufacturer_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/product_name"
+                        app:manufacturer="@{product.manufacturer}"
+                        app:manufacturerHolder="@{@string/produced_by}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{product.grossPrice}"
+                        app:price="@{product.grossPrice}"
+                        app:currencyHolder="@{@string/currency}"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="34sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/product_manufacturer_name" />
+
+                </LinearLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{product.grossPrice}"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"
-                android:textColor="#FFFFFF"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@id/product_name" />
-        </RelativeLayout>
-    </com.skydoves.elasticviews.ElasticCardView>
-</LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.skydoves.elasticviews.ElasticCardView>
+    </LinearLayout>
 </layout>

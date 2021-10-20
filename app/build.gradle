@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -50,6 +51,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'javax.inject:javax.inject:1'
+    implementation 'androidx.fragment:fragment-ktx:1.3.2'
     //Retrofit
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -58,14 +60,12 @@ dependencies {
     implementation 'com.stone.vega.library:VegaLayoutManager:1.0.6'
     // Elastic View
     implementation 'com.github.skydoves:elasticviews:2.0.7'
-
     //Dagger
     implementation 'com.google.dagger:dagger:2.35.1'
     kapt 'com.google.dagger:dagger-compiler:2.35.1'
     implementation 'com.google.dagger:dagger-android:2.35.1'
     kapt 'com.google.dagger:dagger-android-processor:2.35.1'
     implementation 'com.google.dagger:dagger-android-support:2.35.1'
-
     //Work
     implementation 'androidx.work:work-runtime-ktx:2.5.0'
     //Okhttp
@@ -75,8 +75,8 @@ dependencies {
     implementation 'com.readystatesoftware.chuck:library:1.1.0'
 //    implementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
 
-    implementation 'androidx.fragment:fragment-ktx:1.3.2'
-
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

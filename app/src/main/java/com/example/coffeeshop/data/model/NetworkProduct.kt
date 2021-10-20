@@ -8,6 +8,10 @@ class NetworkProduct(
     @SerializedName("product_name")
     val name: String,
 
+    val manufacturer: Manufacturer,
+
     @SerializedName("gross_price")
-    val grossPrice: String
+    val grossPrice: String,
+
+    val images: List<ProductImage>
 )

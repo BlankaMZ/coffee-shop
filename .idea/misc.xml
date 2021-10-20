@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CoffeeShop/app/src/main/res/drawable/add_a_photo.xml" value="0.1" />
+        <entry key="..\:/CoffeeShop/app/src/main/res/drawable/text_borders.xml" value="0.2703125" />
         <entry key="..\:/CoffeeShop/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/CoffeeShop/app/src/main/res/layout/fragment_product_list.xml" value="0.152" />
         <entry key="..\:/CoffeeShop/app/src/main/res/layout/product_item.xml" value="0.25416666666666665" />
