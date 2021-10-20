@@ -7,6 +7,6 @@
 
     <fragment
         android:id="@+id/productListFragment"
-        android:name="com.example.coffeeshop.productlist.ProductListFragment"
+        android:name="com.example.coffeeshop.ui.productlist.ProductListFragment"
         tools:layout="@layout/fragment_product_list" />
 </navigation>

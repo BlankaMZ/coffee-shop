@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <variable
+        name="product"
+        type="com.example.coffeeshop.data.model.Product" />
+</data>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.skydoves.elasticviews.ElasticCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/teal_200"
+        android:elevation="12dp"
+        app:cardView_duration="250"
+        app:cardView_scale="0.8"
+        android:layout_margin="17dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="140dp"
+                app:text="@{product.name}"
+                android:textSize="18sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{product.grossPrice}"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/product_name" />
+        </RelativeLayout>
+    </com.skydoves.elasticviews.ElasticCardView>
+</LinearLayout>
+</layout>
