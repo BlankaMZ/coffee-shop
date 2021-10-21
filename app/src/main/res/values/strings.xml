@@ -3,11 +3,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="product_list_work_title">Here will be product list</string>
-    <string name="product_list_title">Coffee beans \&amp; ground coffee!</string>
+    <string name="product_list_title">Coffee beans \&amp; ground coffee</string>
     <string name="no_products_info">"Oops! No products were found!"</string>
     <string name="error_occurred">Oops! An error occurred. \n\n Please check your internet connection.
         \n\n Swipe down to retry.</string>
     <string name="manufacturer_holder">Manufacturer</string>
     <string name="produced_by">Producer</string>
     <string name="currency">zł</string>
+    <string name="search_hint">Search products...</string>
 </resources>
