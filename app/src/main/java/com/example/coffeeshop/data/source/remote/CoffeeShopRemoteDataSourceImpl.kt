@@ -1,5 +1,6 @@
 package com.example.coffeeshop.data.source.remote
 
+import android.util.Log
 import com.example.coffeeshop.data.model.NetworkProduct
 import com.example.coffeeshop.di.scope.IoDispatcher
 import com.example.coffeeshop.utils.Result as thisResult
@@ -12,10 +13,10 @@ class CoffeeShopRemoteDataSourceImpl @Inject constructor(
     private val apiService: CoffeeShopApiService
 ) : CoffeeShopRemoteDataSource {
 
-    override suspend fun getProducts(): thisResult<List<NetworkProduct>> =
+    override suspend fun getProducts(name: String?): thisResult<List<NetworkProduct>> =
         withContext(ioDispatcher) {
             return@withContext try {
-                val result = apiService.getProducts()
+                val result = apiService.getProducts(name)
                 if (result.isSuccessful) {
                     val productsList = result.body()
                     thisResult.Success(productsList)

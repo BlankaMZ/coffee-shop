@@ -13,10 +13,10 @@ class CoffeeShopRepositoryImpl @Inject constructor(
     private val remoteDataSource: CoffeeShopRemoteDataSource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : CoffeeShopRepository {
-    override suspend fun getProducts(refresh: Boolean): thisResult<List<Product>?> =
+    override suspend fun getProducts(refresh: Boolean, name: String?): thisResult<List<Product>?> =
         withContext(ioDispatcher) {
             val mapper = ProductListMapperRemote()
-            when (val response = remoteDataSource.getProducts()) {
+            when (val response = remoteDataSource.getProducts(name)) {
                 is thisResult.Success -> {
                     if (response.data != null) {
                         thisResult.Success(mapper.transformToDomain(response.data))

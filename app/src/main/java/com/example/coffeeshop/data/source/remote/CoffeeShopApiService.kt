@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface CoffeeShopApiService {
     @GET("products")
-    suspend fun getProducts(): Response<List<NetworkProduct>>
+    suspend fun getProducts(@Query("name") name: String?): Response<List<NetworkProduct>>
 }

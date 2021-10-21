@@ -5,5 +5,5 @@ import com.example.coffeeshop.utils.Result as thisResult
 
 interface CoffeeShopRemoteDataSource {
 
-    suspend fun getProducts() : thisResult<List<NetworkProduct>>
+    suspend fun getProducts(name: String?) : thisResult<List<NetworkProduct>>
 }

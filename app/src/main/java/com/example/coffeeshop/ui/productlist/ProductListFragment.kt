@@ -15,7 +15,12 @@ import com.example.coffeeshop.ui.BaseFragment
 import com.example.coffeeshop.ui.productlist.ProductListAdapter.ProductListOnclickListener
 import javax.inject.Inject
 import androidx.core.view.MenuItemCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.coffeeshop.ui.MainActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class ProductListFragment : BaseFragment() {
@@ -25,6 +30,7 @@ class ProductListFragment : BaseFragment() {
     private val viewModel by viewModels<ProductListViewModel> { viewModelFactoryProvider }
 
     private lateinit var productListAdapter: ProductListAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,8 @@ class ProductListFragment : BaseFragment() {
 
             override fun onQueryTextChange(text: String?): Boolean {
                 Log.i("Query change", "Written text: $text")
+//                initiateRefresh(text)
+                initiateSearch(text)
                 return true
             }
         })
@@ -63,7 +71,7 @@ class ProductListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         productListAdapter = ProductListAdapter(ProductListOnclickListener())
         binding.productsRecyclerview.adapter = productListAdapter
-        viewModel.refreshProducts()
+        viewModel.refreshProducts(null)
         observeMoreViewModels()
     }
 
@@ -88,15 +96,24 @@ class ProductListFragment : BaseFragment() {
             }
         }
         binding.productListSwipeRefresh.setOnRefreshListener {
-            initiateRefresh()
+            initiateRefresh(null)
         }
     }
 
-    private fun initiateRefresh() {
+    private fun initiateRefresh(name: String?) {
         binding.productListErrorText?.visibility = View.GONE
         binding.productListProgressBar.visibility = View.VISIBLE
         binding.productsRecyclerview.visibility = View.GONE
-        viewModel.refreshProducts()
+        viewModel.refreshProducts(name)
         binding.productListSwipeRefresh.isRefreshing = false
     }
+
+    private fun initiateSearch(name: String?) {
+        binding.productListErrorText?.visibility = View.GONE
+        binding.productListProgressBar.visibility = View.VISIBLE
+        binding.productsRecyclerview.visibility = View.GONE
+        viewModel.searchDebounced(name)
+        binding.productListSwipeRefresh.isRefreshing = false
+    }
+
 }

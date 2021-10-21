@@ -7,6 +7,8 @@ import com.example.coffeeshop.data.model.Product
 import com.example.coffeeshop.data.source.repository.CoffeeShopRepository
 import com.example.coffeeshop.utils.Result as thisResult
 import com.example.coffeeshop.utils.asLiveData
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,11 +25,20 @@ class ProductListViewModel @Inject constructor(
     private val _dataFetchState = MutableLiveData<Boolean>()
     val dataFetchState = _dataFetchState.asLiveData()
 
-    fun refreshProducts() {
+    private var searchJob: Job? = null
 
+    fun searchDebounced(searchText: String?) {
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
+            delay(300)
+            refreshProducts(searchText)
+        }
+    }
+
+    fun refreshProducts(name: String?) {
         _isLoading.value = true
         viewModelScope.launch {
-            when (val result = repository.getProducts(true)) {
+            when (val result = repository.getProducts(true, name)) {
                 is thisResult.Success -> {
                     _isLoading.postValue(false)
                     if (result.data != null) {

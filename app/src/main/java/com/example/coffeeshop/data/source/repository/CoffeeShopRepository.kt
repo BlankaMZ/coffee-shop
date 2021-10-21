@@ -5,5 +5,5 @@ import com.example.coffeeshop.utils.Result as thisResult
 
 interface CoffeeShopRepository {
 
-    suspend fun getProducts(refresh: Boolean): thisResult<List<Product>?>
+    suspend fun getProducts(refresh: Boolean, name: String?): thisResult<List<Product>?>
 }
