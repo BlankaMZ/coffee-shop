@@ -81,8 +81,12 @@ class ProductListFragment : BaseFragment() {
             products.observe(viewLifecycleOwner) { products ->
                 products?.let { list ->
                     productListAdapter.submitList(list)
-                }
+                    binding.apply {
+                        productsRecyclerview.isVisible = list.isEmpty()
+                        productListEmptyInfoText.isVisible = list.isEmpty()
+                    }
 
+                }
             }
 
             dataFetchState.observe(viewLifecycleOwner) { state ->

@@ -7,6 +7,7 @@
     <string name="no_products_info">"Oops! No products were found!"</string>
     <string name="error_occurred">Oops! An error occurred. \n\n Please check your internet connection.
         \n\n Swipe down to retry.</string>
+    <string name="empty_search">No products were found :(</string>
     <string name="manufacturer_holder">Manufacturer</string>
     <string name="produced_by">Producer</string>
     <string name="currency">zł</string>
